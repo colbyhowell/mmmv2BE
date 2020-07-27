@@ -7,6 +7,7 @@ function getWeather(params) {
     )
     .then((res) => {
       const tempData = [];
+      const city = res.data.city.name;
       res.data.list.forEach((d) => {
         tempData.push(d.main.temp);
       });
@@ -42,6 +43,7 @@ function getWeather(params) {
         mean: mean(...tempData),
         median: median(tempData),
         mode: mode(tempData),
+        city: city,
       };
     })
     .catch((err) => {
